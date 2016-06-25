@@ -10,11 +10,13 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug'
   gem 'launchy'
   gem 'pry'
+  gem 'rspec-rails'
 end
 
 group :development do
