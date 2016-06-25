@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "user can visit a city through landing page drop down" do
+feature "user can visit a city through landing page drop down" do
   it "shows a dropdown menu" do
-    city = City.create(name: "Denver", state: "Colorado")
+    city = Location.create(name: "Denver")
 
     visit root_path
 
