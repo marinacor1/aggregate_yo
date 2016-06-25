@@ -1,19 +1,14 @@
-<div class="header">
 
   <div class="landing-page">
   <div class="dropdown welcome-drop">
     <div class= "where">
-    <button class="btn-lg btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Where do you want to go?
-      <span class="caret"></span>
-    </button>
-  </div>
-    <ul class="dropdown-menu welcome-locations" aria-labelledby="dropdownMenu1">
-      <% @locations.each do |location| %>
-        <li><%= link_to location.name, location_path(location) %></li>
-      <% end %>
+    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Choose a Destination</a>
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="#!">one</a></li>
+      <li><a href='#!'>two</a></li>
+      <li><a href='#!'>three</a></li>
     </ul>
   </div>
+  </div>
 
-</div>
 </div>
