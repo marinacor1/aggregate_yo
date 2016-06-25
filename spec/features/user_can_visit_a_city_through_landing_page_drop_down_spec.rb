@@ -6,7 +6,7 @@ feature "user can visit a city through landing page drop down" do
 
     visit root_path
     
-    click_on "Where do you want to go?"
+save_and_open_page
     select("Denver")
     click_button "Submit"
 
