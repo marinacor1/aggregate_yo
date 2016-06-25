@@ -1,12 +1,13 @@
 <div class="header">
-  <div class="container">
 
+  <div class="landing-page">
   <div class="dropdown welcome-drop">
-    <h2>Choose your destination:</h2>
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <div class= "where">
+    <button class="btn-lg btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Where do you want to go?
       <span class="caret"></span>
     </button>
+  </div>
     <ul class="dropdown-menu welcome-locations" aria-labelledby="dropdownMenu1">
       <% @locations.each do |location| %>
         <li><%= link_to location.name, location_path(location) %></li>
@@ -14,5 +15,5 @@
     </ul>
   </div>
 
-  </div>
+</div>
 </div>

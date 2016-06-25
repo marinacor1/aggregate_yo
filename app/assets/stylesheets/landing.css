@@ -1,0 +1,20 @@
+.welcome-drop {
+}
+
+.landing-page {
+  background: url(https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=2d2c41c9d46615b3caeea26fd902bb29) no-repeat center;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 120%;
+  padding-bottom: 30px;
+}
+
+.where {
+  display: block;
+  margin: auto;
+  color: black;
+  padding-top: 400px;
+  padding-left: 650px;
+}
