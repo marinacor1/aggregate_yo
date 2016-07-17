@@ -8,5 +8,6 @@ class FHServices
   end
 
   def get_item
+    @connection.get "/marina/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 end
