@@ -35,3 +35,8 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+import Geosuggest from 'react-geosuggest';
+
+<Geosuggest />
