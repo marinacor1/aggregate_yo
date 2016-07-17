@@ -3,11 +3,23 @@ class FHServices
     @connection = Faraday.new(url: "https://demo.fareharbor.com/api/external/v1/companies/")
   end
 
+  def parse(response)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def get_company
-    @connection.get "/?api-app="+"#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+    @connection.get "?api-app="+"#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 
   def get_item
-    @connection.get "/marina/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+    @connection.get "marina/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+  end
+
+  def companies_hash
+    parse(get_company)
+  end
+
+  def items_hash
+    parse(get_item)
   end
 end
