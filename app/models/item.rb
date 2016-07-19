@@ -5,13 +5,15 @@ class Item
     @service ||= FHServices.new
   end
 
-  def self.items_by_location #passed in through geofilter
+  def self.items_by_location(location) #passed in through geofilter
     all_items = FHServices.new.items_hash
-    all_items[:items].map do |item|
+    grouped = all_items[:items].map do |item|
       {name: item[:name], location: item[:location],
         image: item[:images]}
     end
-
+    cities = grouped.group_by {|hash| hash[:location]}
+    
+    # {"Miami, FL"=>[{:name=>"Marina's Bachata Dance Classes", :location=>"Miami, FL", :image=>[]}]}
   end
 
 end
