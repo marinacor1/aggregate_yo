@@ -5,7 +5,7 @@
     </center>
       <div id="myDropdown" class="dropdown-content">
         <% @locations.each do |location| %>
-        <%= link_to location.name, location %>
+        <%= link_to location[:name], location %>
         <% end %>
       </div>
   </div>
