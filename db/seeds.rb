@@ -1,18 +1,12 @@
 locations =
-Location.create(name: 'Oahu')
-Location.create(name: 'Big Island')
-Location.create(name: 'Austin')
-Location.create(name: 'San Antonio')
-Location.create(name: 'Los Angeles')
-Location.create(name: 'New York City')
-Location.create(name: 'Boston')
-Location.create(name: 'Chicago')
-Location.create(name: 'Denver')
-Location.create(name: 'Ft. Lauderdale')
-Location.create(name: 'Miami, FL')
-Location.create(name: 'Charleston')
-Location.create(name: 'Hawaii')
-Location.create(name: 'New Orleans')
-Location.create(name: 'Philadelphia')
-Location.create(name: 'Seattle')
-Location.create(name: 'Washington, D.C.')
+[Place.create(name: 'Oahu', slug: "Oahu"),
+Place.create(name: 'Austin', slug: "Austin"),
+Place.create(name: 'San Antonio', slug: "San Antonio"),
+Place.create(name: 'New York City', slug: "New York City"),
+Place.create(name: 'Boston', slug: "Boston"),
+Place.create(name: 'Denver', slug: "Denver"),
+Place.create(name: 'Miami, FL', slug: "Miami"),
+Place.create(name: 'New Orleans', slug: "New Orleans")]
+locations.each do |loc|
+  loc.save
+end
