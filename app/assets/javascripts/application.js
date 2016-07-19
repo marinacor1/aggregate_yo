@@ -37,6 +37,6 @@ window.onclick = function(event) {
 }
 
 
-import Geosuggest from 'react-geosuggest';
-
-<Geosuggest />
+var Geosuggest = require('react-geosuggest').default;
+debugger
+// <Geosuggest />
