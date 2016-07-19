@@ -5,7 +5,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'shoulda/matchers'
-require 'feature_helper'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
