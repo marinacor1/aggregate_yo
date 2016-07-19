@@ -4,9 +4,11 @@ class LocationsController < ApplicationController
   end
 
   def show
-    # params[location] will be passed into items_by_location and 
+    @location = Location.find(params['id']).name
+    # params[location] will be passed into items_by_location and
     # only items within a certain location will be displayed
-    @items = Item.items_by_location
+    city_group = Item.items_by_location(@location)
+    @items = city_group[@location]
   end
 
 end

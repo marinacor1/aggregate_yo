@@ -5,12 +5,10 @@ feature "user can visit a city through landing page drop down" do
     city = Location.create(name: "Denver")
 
     visit root_path
-    
-save_and_open_page
-    select("Denver")
-    click_button "Submit"
+
+    click_on "Denver"
 
     expect(current_path).to eq location_path(city)
-
+    expect(page).to have_content "Welcome to Denver"
   end
 end

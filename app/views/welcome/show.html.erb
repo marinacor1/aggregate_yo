@@ -5,8 +5,8 @@
     </center>
       <div id="myDropdown" class="dropdown-content">
         <% @locations.each do |location| %>
-        <a href="/"><%= location.name %></a>
+        <%= link_to location.name, location %>
         <% end %>
       </div>
   </div>
-  </div>
+</div>
