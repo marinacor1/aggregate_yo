@@ -9,5 +9,6 @@ feature "user can visit a city through landing page drop down" do
     click_on "Denver"
 
     expect(current_path).to eq location_path(city)
+    expect(page).to have_content "Welcome to Denver"
   end
 end
