@@ -5,8 +5,7 @@ feature "user can visit a city through landing page drop down" do
     city = Location.create(name: "Denver")
 
     visit root_path
-    
-save_and_open_page
+
     select("Denver")
     click_button "Submit"
 
