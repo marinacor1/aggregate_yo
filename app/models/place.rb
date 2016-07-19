@@ -1,4 +1,4 @@
-class Location < ActiveRecord::Base
+class Place < ActiveRecord::Base
   attr_accessor :name
 
   validates_presence_of :slug
@@ -10,4 +10,5 @@ class Location < ActiveRecord::Base
   def to_param
     slug
   end
+
 end
