@@ -20,7 +20,8 @@ group :development, :test do
   gem 'byebug'
   gem 'launchy'
   gem 'pry'
-  gem 'rspec-rails' end
+  gem 'rspec-rails'
+end
 
 group :development do
   gem 'web-console', '~> 2.0'
