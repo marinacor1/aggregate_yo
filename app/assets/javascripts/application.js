@@ -50,9 +50,21 @@ var App = React.createClass({
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
+$(document).ready(function(){
+  myFunction();
+})
 
 function myFunction() {
+  $('.dropbtn').keyupfunction(event){
+    var searchWords = $(this).val().toLowerCase();
+    loadSelectWords(searchWords);
+  })
     document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function loadSelectWords(searchWords){
+  var $currentLocations = $('myDropdown').children();
+  debugger
 }
 
 // Close the dropdown menu if the user clicks outside of it
