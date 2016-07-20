@@ -35,6 +35,8 @@ function loadSelectWords(searchWords){
   var notRightLocation = $currentLocations.each(function(index, city){
   var locationName = city.innerText.toLowerCase();
   if (locationName.includes(searchWords)){
+    city.toggle()
+    debugger
       dropSearch(locationName);
     }
     else{
@@ -50,6 +52,7 @@ function dropSearch (locationName) {
     for (i = 0; i < $dropdowns.length; i++) {
       var $openDropdown = $dropdowns[i];
       var city = $openDropdown.innerText.toLowerCase();
+      debugger
       if (city.includes(locationName)){
         document.getElementById('myDropdown').classList.toggle('show');
       }
