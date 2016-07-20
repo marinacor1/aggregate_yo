@@ -55,7 +55,8 @@ $(document).ready(function(){
 })
 
 function myFunction() {
-  $('.dropbtn').keyupfunction(event){
+  $('.dropbtn').keyup(function(event){
+    debugger
     var searchWords = $(this).val().toLowerCase();
     loadSelectWords(searchWords);
   })
