@@ -35,11 +35,10 @@ function loadSelectWords(searchWords){
   var notRightLocation = $currentLocations.each(function(index, city){
   var locationName = city.innerText.toLowerCase();
   if (locationName.includes(searchWords)){
-      $(city).removeClass('invisible');
       dropSearch(locationName);
     }
     else{
-      $(city).addClass('invisible');
+      return locationName;
     }
   });
 }
@@ -49,11 +48,12 @@ function dropSearch (locationName) {
     var $dropdowns = $('#myDropdown').children();
     var i;
     for (i = 0; i < $dropdowns.length; i++) {
-      var openDropdown = $dropdowns[i];
-      var city = openDropdown.innerText.toLowerCase();
+      var $openDropdown = $dropdowns[i];
+      var city = $openDropdown.innerText.toLowerCase();
       if (city.includes(locationName)){
-        document.getElementById('myDropdown').classList.toggle('show');
-        openDropdown.classList.contains('show');
+        debugger
+        $('#myDropdown').children().toggle()
+        // document.getElementById('myDropdown').classList.toggle('show');
       }
     }
 };
