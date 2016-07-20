@@ -34,8 +34,7 @@ function myFunction() {
 function loadSelectWords(searchWords){
   var $currentLocations = $('#myDropdown').children();
   var notRightLocation = $currentLocations.each(function(index, city){
-      debugger
-  var locationName = $(city).find(city.children()).text().toLowerCase();
+  var locationName = city.innerText.toLowerCase();
   if (locationName.includes(searchWords)){
       $(city).removeClass('invisible');
     }
