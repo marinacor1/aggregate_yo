@@ -35,3 +35,28 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+$(document).ready(function)(){
+  searchFilter();
+}
+
+function searchFilter(selector){
+  $(selector).keyup(function(event){
+    var searchWords = $(this).val().toLowerCase();
+    loadSelectWords(searchWords);
+  });
+}
+
+
+function loadSelectWords(searchWords){
+  var $currentIdeas = $('.dropdown').children();
+  var notRightIdeas = $currentIdeas.each(function(index, individualIdea ){
+    var ideaBodyAndText = $(individualIdea).find('#searchbox').text().toLowerCase();
+    if (ideaBodyAndText.includes(searchWords)){
+      $(individualIdea).show();
+    } else {
+      $(individualIdea).hide();
+    }
+  });
+}

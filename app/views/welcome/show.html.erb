@@ -1,12 +1,6 @@
 <div class="landing-page">
+
   <div class="dropdown">
-    <center>
-      <button onclick="myFunction()" class="dropbtn">Choose your next destination:</button>
-    </center>
-      <div id="myDropdown" class="dropdown-content">
-        <% @locations.each do |location| %>
-        <%= link_to location[:name], location_path(id: location.id) %>
-        <% end %>
-      </div>
+    Search: <input id="searchbox" type="text" name="searchbox"><br><br>
   </div>
 </div>
