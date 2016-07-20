@@ -36,24 +36,24 @@ function loadSelectWords(searchWords){
   var locationName = city.innerText.toLowerCase();
   if (locationName.includes(searchWords)){
       $(city).removeClass('invisible');
-      dropSearch(locationName)
-      document.getElementById("#myDropdown").classList.toggle("show");
+      dropSearch(locationName);
     }
     else{
       $(city).addClass('invisible');
     }
-  })
+  });
 }
 
 // Close the dropdown menu if the user clicks outside of it
 function dropSearch (locationName) {
-debugger
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var $dropdowns = $('#myDropdown').children();
     var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+    for (i = 0; i < $dropdowns.length; i++) {
+      var openDropdown = $dropdowns[i];
+      var city = openDropdown.innerText.toLowerCase();
+      if (city.includes(locationName)){
+        document.getElementById('myDropdown').classList.toggle('show');
+        openDropdown.classList.contains('show');
       }
     }
 };
