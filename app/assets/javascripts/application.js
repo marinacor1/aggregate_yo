@@ -28,7 +28,6 @@ function myFunction() {
     var searchWords = $(this).val().toLowerCase();
     loadSelectWords(searchWords);
   });
-    document.getElementById("#myDropdown").classList.toggle("show");
 }
 
 function loadSelectWords(searchWords){
@@ -37,6 +36,8 @@ function loadSelectWords(searchWords){
   var locationName = city.innerText.toLowerCase();
   if (locationName.includes(searchWords)){
       $(city).removeClass('invisible');
+      dropSearch(locationName)
+      document.getElementById("#myDropdown").classList.toggle("show");
     }
     else{
       $(city).addClass('invisible');
@@ -45,9 +46,8 @@ function loadSelectWords(searchWords){
 }
 
 // Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
+function dropSearch (locationName) {
+debugger
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -56,9 +56,4 @@ window.onclick = function(event) {
         openDropdown.classList.remove('show');
       }
     }
-  }
 };
-
-
-var Geosuggest = require('react-geosuggest').default;
-// <Geosuggest />
