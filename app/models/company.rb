@@ -6,7 +6,6 @@ class Company < ActiveRecord::Base
   end
 
   def self.company_save
-    all_services = service.companies_hash
     binding.pry
   end
 
