@@ -19,53 +19,30 @@
 toggle between hiding and showing the dropdown content */
 
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Geosuggest from '../../src/Geosuggest';
-
-var App = React.createClass({
-  render: function(){
-    var fixtures = [
-      {label: 'New York', location: {lat: 40.7033127, lng: -73.979681}},
-      {label: 'Rio', location: {lat: -22.066452, lng: -42.9232368}},
-      {label: 'Tokyo', location: {lat: 35.673343, lng: 139.710388}}
-    ];
-
-    return (
-      <div>
-      <Geosuggest
-      fixtures={fixtures}
-      onFocus={this.onFocus}
-      onBlur={this.onBlur}
-      onChange={this.onChange}
-      onSuggestSelect={this.onSuggestSelect}
-      onSuggestNoResults={this.onSuggestNoResults}
-      location={new google.maps.LatLng(53.558572, 9.9278215)}
-      radius="20" />
-      </div>
-    );
-  }
-
-})
-
-ReactDOM.render(<App />, document.getElementById('app'));
-
 $(document).ready(function(){
   myFunction();
-})
+});
 
 function myFunction() {
   $('.dropbtn').keyup(function(event){
-    debugger
     var searchWords = $(this).val().toLowerCase();
     loadSelectWords(searchWords);
-  })
-    document.getElementById("myDropdown").classList.toggle("show");
+  });
+    document.getElementById("#myDropdown").classList.toggle("show");
 }
 
 function loadSelectWords(searchWords){
-  var $currentLocations = $('myDropdown').children();
-  debugger
+  var $currentLocations = $('#myDropdown').children();
+  var notRightLocation = $currentLocations.each(function(index, city){
+      debugger
+  var locationName = $(city).find(city.children()).text().toLowerCase();
+  if (locationName.includes(searchWords)){
+      $(city).removeClass('invisible');
+    }
+    else{
+      $(city).addClass('invisible');
+    }
+  })
 }
 
 // Close the dropdown menu if the user clicks outside of it
