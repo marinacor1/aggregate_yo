@@ -17,6 +17,40 @@
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Geosuggest from '../../src/Geosuggest';
+
+var App = React.createClass({
+  render: function(){
+    var fixtures = [
+      {label: 'New York', location: {lat: 40.7033127, lng: -73.979681}},
+      {label: 'Rio', location: {lat: -22.066452, lng: -42.9232368}},
+      {label: 'Tokyo', location: {lat: 35.673343, lng: 139.710388}}
+    ];
+
+    return (
+      <div>
+      <Geosuggest
+      fixtures={fixtures}
+      onFocus={this.onFocus}
+      onBlur={this.onBlur}
+      onChange={this.onChange}
+      onSuggestSelect={this.onSuggestSelect}
+      onSuggestNoResults={this.onSuggestNoResults}
+      location={new google.maps.LatLng(53.558572, 9.9278215)}
+      radius="20" />
+      </div>
+    );
+  }
+
+})
+
+ReactDOM.render(<App />, document.getElementById('app'));
+
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -34,9 +68,8 @@ window.onclick = function(event) {
       }
     }
   }
-}
+};
 
 
 var Geosuggest = require('react-geosuggest').default;
-debugger
 // <Geosuggest />
