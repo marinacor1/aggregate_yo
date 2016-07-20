@@ -51,9 +51,7 @@ function dropSearch (locationName) {
       var $openDropdown = $dropdowns[i];
       var city = $openDropdown.innerText.toLowerCase();
       if (city.includes(locationName)){
-        debugger
-        $('#myDropdown').children().toggle()
-        // document.getElementById('myDropdown').classList.toggle('show');
+        document.getElementById('myDropdown').classList.toggle('show');
       }
     }
 };
