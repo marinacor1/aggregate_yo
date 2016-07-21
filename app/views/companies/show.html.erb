@@ -1,5 +1,7 @@
-<h1><%= @company %>'s offered Activities</h1>
+<h1><%= @company[:name] %>'s offered Activities</h1>
 
-<% @items.each do |item| %>
-<%= item.name %>
+<ul><% @items.each do |item| %>
+<li><%= item[:name] %></li>
+<li><%= item[:location] %></li>
+<%= image_tag(item[:image], width: "300", height: "300") %></ul>
 <% end %>
