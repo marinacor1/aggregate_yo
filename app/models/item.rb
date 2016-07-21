@@ -21,6 +21,7 @@ class Item
       {name: item[:name], location: item[:location],
         image: item[:image_cdn_url]}
     end
+    puts "The items are being updated"
   end
 
 end
