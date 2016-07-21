@@ -1,9 +1,4 @@
 class Company < ActiveRecord::Base
-  attr_accessor :service
-
-  def initialize
-    @service ||= FHServices.new
-  end
 
   def self.company_save
     companies = FHServices.new.companies_hash

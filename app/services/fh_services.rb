@@ -11,15 +11,16 @@ class FHServices
     @connection.get "?api-app="+"#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 
-  def get_item
-    @connection.get "marina/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+  def get_item(shortname)
+    @connection.get "#{shortname}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 
   def companies_hash
     parse(get_company)
   end
 
-  def items_hash
-    parse(get_item)
+  def items_hash(shortname)
+    #shortname could potentially be an array of all short names within a location
+    parse(get_item(shortname))
   end
 end
