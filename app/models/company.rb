@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
   end
 
   def self.find_by_location(zip)
-    Company.find_by(location: zip)
+    Company.where(location: zip)
   end
 
 

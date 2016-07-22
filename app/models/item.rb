@@ -7,13 +7,13 @@ class Item
 
   def self.items_by_location(location)
     all_companies = Company.find_by_location(location)
-    all_companies.each do |shortname|
-      all_items = FHServices.new.items_hash(shortname)
-    end
-    grouped = all_items[:items].map do |item|
-      {name: item[:name], location: item[:location],
-        image: item[:images]}
-    end
+      all_companies.each do |shortname|
+        all_items = FHServices.new.items_hash(shortname)
+      end
+      grouped = all_items[:items].map do |item|
+        {name: item[:name], location: item[:location],
+          image: item[:images]}
+      end
     cities_groups = grouped.group_by {|hash| hash[:location]}
     # {"Miami, FL"=>[{:name=>"Marina's Bachata Dance Classes", :location=>"Miami, FL", :image=>[]}]}
   end
