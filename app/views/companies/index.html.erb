@@ -1,4 +1,5 @@
 <h1>All Companies</h1>
+<%= @company_save %>
 <% @companies.each do |company| %>
 <%= link_to "#{company[:name]}'s activities", company_path(company)%>
 <% end %>

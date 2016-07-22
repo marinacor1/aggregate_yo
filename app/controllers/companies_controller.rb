@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
 
   def index
+    @company_save = Item.item_save
     @companies = Company.all
   end
 

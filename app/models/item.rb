@@ -26,7 +26,7 @@ class Item
     end
 
     save_locations = all_items[:items].each do |item|
-      
+
     end
 
     puts "The items are being updated"
@@ -35,7 +35,7 @@ class Item
   def self.item_save
     companies = Company.all
     items = companies.each do |comp|
-      FH.Services.new.items_hash(comp[:shortname])
+      FHServices.new.items_hash(comp[:shortname])
     end
   end
 
