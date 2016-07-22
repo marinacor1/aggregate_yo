@@ -1,11 +1,12 @@
 every 1.day do
   rake "company_update"
+  rake "items_update"
 end
 
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
-# http://en.wikipedia.org/wiki/Cron 
+# http://en.wikipedia.org/wiki/Cron
 
 # Example:
 #

@@ -5,8 +5,11 @@ class Item
     @service ||= FHServices.new
   end
 
-  def self.items_by_location(location) #passed in through geofilter
-    all_items = FHServices.new.items_hash(shortname)
+  def self.items_by_location(location)
+    all_companies = Company.find_by_location(location)
+    all_companies.each do |shortname|
+      all_items = FHServices.new.items_hash(shortname)
+    end
     grouped = all_items[:items].map do |item|
       {name: item[:name], location: item[:location],
         image: item[:images]}
@@ -21,7 +24,19 @@ class Item
       {name: item[:name], location: item[:location],
         image: item[:image_cdn_url]}
     end
+
+    save_locations = all_items[:items].each do |item|
+      
+    end
+
     puts "The items are being updated"
+  end
+
+  def self.item_save
+    companies = Company.all
+    items = companies.each do |comp|
+      FH.Services.new.items_hash(comp[:shortname])
+    end
   end
 
 end

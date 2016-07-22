@@ -20,7 +20,6 @@ class FHServices
   end
 
   def items_hash(shortname)
-    #shortname could potentially be an array of all short names within a location
     parse(get_item(shortname))
   end
 end

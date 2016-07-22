@@ -10,4 +10,14 @@ class Company < ActiveRecord::Base
   end
 
 
+  def self.company_save_location
+    
+
+  end
+
+  def self.find_by_location(zip)
+
+  end
+
+
 end

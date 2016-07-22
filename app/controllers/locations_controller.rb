@@ -1,15 +1,12 @@
 class LocationsController < ApplicationController
   def index
-
+    @locations = Location.all
   end
 
   def show
     @location = Location.find(params['id'])
-    # location_name = @location.name
-    # # params[location] will be passed into items_by_location and
-    # # only items within a certain location will be displayed
-    # city_group = Item.items_by_location(location_name)
-    # @items = city_group[@location]
+    city_group = Item.items_by_location(@location[:name])
+    @location_items = city_group[@location]
   end
 
 end
