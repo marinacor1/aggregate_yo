@@ -33,9 +33,16 @@ class Item
   end
 
   def self.item_save
-    companies = Company.all
-    items = companies.each do |comp|
-      FHServices.new.items_hash(comp[:shortname])
+    all_companies = Company.all
+    companies = all_companies.map do |comp|
+      {items: FHServices.new.items_hash(comp[:shortname]), shortname: comp[:shortname]}
+    end
+    companies.each do |c|
+      c[:items][:items].each do |item|
+        comp = Company.find_by(shortname: c[:shortname])
+        comp.location = item[:location]
+        comp.save
+      end
     end
   end
 
