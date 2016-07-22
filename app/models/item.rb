@@ -28,19 +28,21 @@ class Item < ActiveRecord::Base
     all_companies = Company.all
     companies = all_companies.map do |comp|
       c_items = FHServices.new.items_hash(comp[:shortname])
-      save_items_to_database(c_items)
+      self.save_items_to_database(c_items)
       {items: c_items, shortname: comp[:shortname]}
     end
-    save_location(companies)
+    self.save_location(companies)
   end
 
-  def save_item_to_database(c_items)
+  def self.save_items_to_database(c_items)
     c_items.each do |item|
-      Item.first_or_create(name: item[:name], location: item[:location], company_id: comp.id)
-    end
+        if item.class == hash
+          Item.first_or_create(name: item[:name], location: item[:location], company_id: comp.id)
+        end
+      end
   end
 
-  def save_location(companies)
+  def self.save_location(companies)
     companies.each do |c|
       c[:items][:items].each do |item|
         comp = Company.find_by(shortname: c[:shortname])
