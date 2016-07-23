@@ -42,12 +42,13 @@ class Item < ActiveRecord::Base
       end
   end
 
-  def self.save_location(companies)
-    companies.each do |c|
-      c[:items][:items].each do |item|
-        comp = Company.find_by(shortname: c[:shortname])
-        comp.location = item[:location]
-        comp.save
+  def self.save_location(items_information)
+    items_information.each do |items_hash|
+      if items_hash[:items][:items]
+        items_hash = items_hash[:items][:items].first
+        specific_company = Company.find_by(shortname: items_information.first[:shortname])
+        specific_company.location = items_hash[:location]
+        specific_company.save
       end
     end
   end
