@@ -11,8 +11,8 @@ class FHServices
     @connection.get "?api-app="+"#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 
-  def get_item(shortname)
-    @connection.get "#{shortname}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+  def get_item(company)
+    @connection.get "#{company.shortname}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
   end
 
   def companies_hash
