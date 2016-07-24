@@ -43,6 +43,7 @@ class Item < ActiveRecord::Base
                              location: item_details[:location],
                              company_id: comp.id,
                              image: item_details[:image_cdn_url])
+        Location.first_or_create(name: item_details[:location])
       end
     end
   end
