@@ -1,16 +1,18 @@
 class Item < ActiveRecord::Base
 
   def self.items_by_location(location)
-    all_companies = Company.find_by_location(location)
-      all_companies.each do |shortname|
-        all_items = FHServices.new.items_hash(shortname)
+    all_companies_in_area = Company.find_by_location(location)
+      all_items = all_companies_in_area.map do |company|
+        FHServices.new.items_hash(company)
       end
-    grouped = organize_items(all_items)
+    grouped = self.organize_items(all_items)
     cities_groups = grouped.group_by {|hash| hash[:location]}
   end
 
-  def organize_items(all_items)
-    all_items[:items].map do |item|
+  def self.organize_items(all_items)
+    cleaned_all_items = all_items.first[:items]
+    #removes status messages
+    cleaned_all_items.map do |item|
       {name: item[:name], location: item[:location],
       image: item[:images]}
     end

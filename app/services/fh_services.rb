@@ -12,7 +12,11 @@ class FHServices
   end
 
   def get_item(company)
-    @connection.get "#{company.shortname}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+    if company.class == String
+      @connection.get "#{company}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+    else
+      @connection.get "#{company.shortname}/items/?api-app=" + "#{ENV["APPKEY"]}"+"&api-user="+"#{ENV["user_key"]}"
+    end
   end
 
   def companies_hash
