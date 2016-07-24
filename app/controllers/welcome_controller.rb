@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   def check_updates
     current_time = Time.now
-    if @last_time ==nil || (@last_time - current_time) > 24
+    if @last_time.nil? || (@last_time - current_time) > 24
       update_companies_and_items
     end
   end

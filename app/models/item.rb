@@ -11,7 +11,6 @@ class Item < ActiveRecord::Base
 
   def self.organize_items(all_items)
     cleaned_all_items = all_items.first[:items]
-    #removes status messages
     cleaned_all_items.map do |item|
       {name: item[:name], location: item[:location],
       image: item[:images]}
@@ -29,19 +28,18 @@ class Item < ActiveRecord::Base
   def self.item_save
     all_companies = Company.all
     companies = all_companies.map do |comp|
-      c_items = FHServices.new.items_hash(comp[:shortname])
-      self.save_items_to_database(c_items)
+      companys_items = FHServices.new.items_hash(comp[:shortname])
+      self.save_items_to_database(companys_items, comp)
       {items: c_items, shortname: comp[:shortname]}
     end
     self.save_location(companies)
   end
 
-  def self.save_items_to_database(c_items)
-    c_items.each do |item|
-        if item.class == hash
-          Item.first_or_create(name: item[:name], location: item[:location], company_id: comp.id)
-        end
-      end
+  def self.save_items_to_database(companys_items, comp)
+    companys_items.each do |item|
+        item_details = item[1][0] #hacky way to get access to details
+        Item.first_or_create(name: item_details[:name], location: item_details[:location], company_id: comp.id)
+    end
   end
 
   def self.save_location(items_information)

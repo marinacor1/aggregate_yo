@@ -9,5 +9,6 @@
   <% @location_items.each do |item| %>
   <ul><%= item[:name] %></ul>
   <ul><%= item[:location] %></ul>
+  <ul><%= image_tag(item[:image], width: "300", height: "300") %></ul>
   <% end %>
 <% end %>
