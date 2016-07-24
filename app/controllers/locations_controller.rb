@@ -4,10 +4,10 @@ class LocationsController < ApplicationController
   end
 
   def show
-    binding.pry
-    @location = Location.find(params['id'])
+    @location = Location.find(params[:id])
+    location_name = @location[:name]
     city_group = Item.items_by_location(@location[:name])
-    @location_items = city_group[@location]
+    @location_items = city_group[location_name]
   end
 
 end
