@@ -39,7 +39,11 @@ class Item < ActiveRecord::Base
     companys_items.each do |item|
       item_details = item[1][0] #hacky way to get access to details
       if item_details.class == Hash
-        Item.first_or_create(name: item_details[:name], location: item_details[:location], company_id: comp.id)
+        binding.pry
+        Item.first_or_create(name: item_details[:name],
+                             location: item_details[:location],
+                             company_id: comp.id,
+                             image: item_details[:image_cdn_url])
       end
     end
   end
