@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
       all_items = all_companies_in_area.map do |company|
         FHServices.new.items_hash(company)
       end
-    grouped = self.organize_items(all_items)
+    grouped = self.organize_items(all_items) #TODO look at data for multiples
     cities_groups = grouped.group_by {|hash| hash[:location]}
   end
 

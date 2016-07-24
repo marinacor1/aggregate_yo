@@ -1,7 +1,6 @@
 class Company < ActiveRecord::Base
   def self.company_save
-    companies = FHServices.new.companies_hash
-    all_companies = companies[:companies]
+    all_companies = FHServices.new.companies_hash[:companies]
     all_companies.each do |company|
       Company.first_or_create(name: company[:name], shortname: company[:shortname])
     end
