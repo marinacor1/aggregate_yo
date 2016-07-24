@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
     cleaned_all_items = all_items.first[:items]
     cleaned_all_items.map do |item|
       {name: item[:name], location: item[:location],
-      image: item[:images]}
+      image: item[:image_cdn_url]}
     end
   end
 
@@ -39,7 +39,6 @@ class Item < ActiveRecord::Base
     companys_items.each do |item|
       item_details = item[1][0] #hacky way to get access to details
       if item_details.class == Hash
-        binding.pry
         Item.first_or_create(name: item_details[:name],
                              location: item_details[:location],
                              company_id: comp.id,
