@@ -30,15 +30,17 @@ class Item < ActiveRecord::Base
     companies = all_companies.map do |comp|
       companys_items = FHServices.new.items_hash(comp[:shortname])
       self.save_items_to_database(companys_items, comp)
-      {items: c_items, shortname: comp[:shortname]}
+      {items: companys_items, shortname: comp[:shortname]}
     end
     self.save_location(companies)
   end
 
   def self.save_items_to_database(companys_items, comp)
     companys_items.each do |item|
-        item_details = item[1][0] #hacky way to get access to details
+      item_details = item[1][0] #hacky way to get access to details
+      if item_details.class == Hash
         Item.first_or_create(name: item_details[:name], location: item_details[:location], company_id: comp.id)
+      end
     end
   end
 
