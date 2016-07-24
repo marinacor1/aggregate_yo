@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
 
   def check_updates
     current_time = Time.now
-    if @last_time.nil? || (@last_time - current_time) > 24
+    last_time = Item.last.updated_at
+    if last_time.nil? || (last_time - current_time) > 2400
       update_companies_and_items
     end
   end
@@ -11,7 +12,6 @@ class WelcomeController < ApplicationController
   def update_companies_and_items
     Company.company_save
     Item.item_save
-    @last_time = Time.now
   end
 
   def show

@@ -44,6 +44,7 @@ class Item < ActiveRecord::Base
                              company_id: comp.id,
                              image: item_details[:image_cdn_url])
         Location.first_or_create(name: item_details[:location])
+        #TODO add regex to clean up entries
       end
     end
   end
