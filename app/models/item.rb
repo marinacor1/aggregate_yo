@@ -2,28 +2,21 @@ class Item < ActiveRecord::Base
   belongs_to :company
   belongs_to :location
 
-  def self.items_by_location(location)
-    all_companies_in_area = Company.find_by_location(location)
-      all_items = all_companies_in_area.map do |company|
-        FHServices.new.items_hash(company)
-      end
-    grouped = self.organize_items(all_items) #TODO look at data for multiples
-    cities_groups = grouped.group_by {|hash| hash[:location]}
-  end
+  # def self.items_by_location(location)
+  #   all_companies_in_area = Company.find_by_location(location)
+  #     all_items = all_companies_in_area.map do |company|
+  #       FHServices.new.items_hash(company)
+  #     end
+  #   grouped = self.organize_items(all_items) #TODO look at data for multiples
+  #   cities_groups = grouped.group_by {|hash| hash[:location]}
+  # end
 
-  def self.organize_items(all_items)
-    cleaned_all_items = all_items.first[:items]
-    cleaned_all_items.map do |item|
-      {name: item[:name], location: item[:location],
-      image: item[:image_cdn_url]}
-    end
-  end
-
-  # def self.items_by_company(shortname)
-  #   all_items = FHServices.new.items_hash(shortname)
-  #   grouped = all_items[:items].map do |item|
+  # def self.organize_items(all_items)
+  #   binding.pry
+  #   cleaned_all_items = all_items.first[:items]
+  #   cleaned_all_items.map do |item|
   #     {name: item[:name], location: item[:location],
-  #       image: item[:image_cdn_url]}
+  #     image: item[:image_cdn_url]}
   #   end
   # end
 
@@ -41,12 +34,13 @@ class Item < ActiveRecord::Base
     companys_items.each do |item|
       item_details = item[1][0] #hacky way to get access to details
       if item_details.class == Hash
-        new_item = Item.first_or_create(name: item_details[:name],
-                             company_id: comp.id,
-                             image: item_details[:image_cdn_url])
-        specific_location = Location.find_by(name: item_details[:location])
-        self.create_location_reference(item_details[:location], new_item, specific_location)
-        Location.first_or_create(name: item_details[:location])
+        unless Item.find_by(name: item_details[:name])
+          new_item = Item.create(name: item_details[:name],
+                               company_id: comp.id,
+                               image: item_details[:image_cdn_url])
+          specific_location = Location.find_by(name: item_details[:location])
+          self.create_location_reference(item_details[:location], new_item, specific_location)
+        end
         #TODO add regex to clean up entries
       end
     end
