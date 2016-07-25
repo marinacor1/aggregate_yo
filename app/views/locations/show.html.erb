@@ -2,11 +2,12 @@
 <div id="city-splash">
 
 </div>
-<% if @location_items.nil? %>
+<% if @location.items.nil? %>
   <h2>We're sorry but there are currently no items for this location right now</h2>
 <% else %>
   <h2>Items for this location: </h2>
-  <% @location_items.each do |item| %>
+  <% binding.pry %>
+  <% @location.items.each do |item| %>
   <ul><%= item[:name] %></ul>
   <ul><%= item[:location] %></ul>
   <ul><%= image_tag(item[:image], width: "300", height: "300") %></ul>

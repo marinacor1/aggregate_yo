@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :company
+  belongs_to :location
 
   def self.items_by_location(location)
     all_companies_in_area = Company.find_by_location(location)
@@ -55,7 +56,13 @@ class Item < ActiveRecord::Base
       if items_hash[:items][:items]
         items_hash = items_hash[:items][:items].first
         specific_company = Company.find_by(shortname: items_information.first[:shortname])
-        specific_company.location = items_hash[:location]
+        specific_location = Location.find_by(name: items_hash[:location])
+        if specific_location.nil?
+          new_location = Location.create(name: items_hash[:location])
+          specific_company.location_id = new_location.id
+        else
+          specific_company.location_id = specific_location.id
+        end
         specific_company.save
       end
     end
