@@ -41,10 +41,11 @@ class Item < ActiveRecord::Base
     companys_items.each do |item|
       item_details = item[1][0] #hacky way to get access to details
       if item_details.class == Hash
-        Item.first_or_create(name: item_details[:name],
-                             location: item_details[:location],
+        new_item = Item.first_or_create(name: item_details[:name],
                              company_id: comp.id,
                              image: item_details[:image_cdn_url])
+        specific_location = Location.find_by(name: item_details[:location])
+        self.create_location_reference(item_details[:location], new_item, specific_location)
         Location.first_or_create(name: item_details[:location])
         #TODO add regex to clean up entries
       end
@@ -57,15 +58,19 @@ class Item < ActiveRecord::Base
         items_hash = items_hash[:items][:items].first
         specific_company = Company.find_by(shortname: items_information.first[:shortname])
         specific_location = Location.find_by(name: items_hash[:location])
-        if specific_location.nil?
-          new_location = Location.create(name: items_hash[:location])
-          specific_company.location_id = new_location.id
-        else
-          specific_company.location_id = specific_location.id
-        end
-        specific_company.save
+        self.create_location_reference(items_hash[:location], specific_company, specific_location)
       end
     end
+  end
+
+  def self.create_location_reference(location, specific_company, specific_location)
+    if specific_location.nil?
+      new_location = Location.create(name: location)
+      specific_company.location_id = new_location.id
+    else
+      specific_company.location_id = specific_location.id
+    end
+    specific_company.save
   end
 
 end

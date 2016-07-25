@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
 
   def check_updates
     current_time = Time.now
-    last_time = Item.last.updated_at
+    # if Item.last
+    # last_time ||= Item.last.updated_at
     # if last_time.nil? || (last_time - current_time) > -20
       update_companies_and_items
     # end
