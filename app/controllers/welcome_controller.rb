@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   before_action :check_updates
 
   def check_updates
-    current_time = Time.now
+    # current_time = Time.now
     # if Item.last
     # last_time ||= Item.last.updated_at
     # if last_time.nil? || (last_time - current_time) > -20

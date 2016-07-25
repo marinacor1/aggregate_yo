@@ -21,28 +21,31 @@ class Item < ActiveRecord::Base
   # end
 
   def self.item_save
-    all_companies = Company.all
-    companies = all_companies.map do |comp|
-      companys_items = FHServices.new.items_hash(comp[:shortname])
-      self.save_items_to_database(companys_items, comp)
-      {items: companys_items, shortname: comp[:shortname]}
+    companies = Company.all.map do |comp|
+      self.format_and_save_items(comp)
     end
     self.save_location(companies)
   end
 
+
+  def self.format_and_save_items(comp)
+    companys_items = FHServices.new.items_hash(comp[:shortname])
+    self.save_items_to_database(companys_items, comp)
+    {items: companys_items, shortname: comp[:shortname]}
+  end
+
   def self.save_items_to_database(companys_items, comp)
-    companys_items.each do |item|
-      item_details = item[1][0] #hacky way to get access to details
-      if item_details.class == Hash
-        unless Item.find_by(name: item_details[:name])
-          new_item = Item.create(name: item_details[:name],
+    companys_items.each do |company|
+      item_details = company[1] #hacky way to get access to details
+        item_details.each do |item|
+        # unless Item.find_by(name: item_details[:name])
+          new_item = Item.create(name: item[:name],
                                company_id: comp.id,
-                               image: item_details[:image_cdn_url])
-          specific_location = Location.find_by(name: item_details[:location])
-          self.create_location_reference(item_details[:location], new_item, specific_location)
+                               image: item[:image_cdn_url])
+          specific_location = Location.find_by(name: item[:location])
+          self.create_location_reference(item[:location], new_item, specific_location)
         end
         #TODO add regex to clean up entries
-      end
     end
   end
 
