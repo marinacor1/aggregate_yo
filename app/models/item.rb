@@ -30,7 +30,6 @@ class Item < ActiveRecord::Base
   def self.item_save
     all_companies = Company.all
     companies = all_companies.map do |comp|
-      binding.pry
       companys_items = FHServices.new.items_hash(comp[:shortname])
       self.save_items_to_database(companys_items, comp)
       {items: companys_items, shortname: comp[:shortname]}
