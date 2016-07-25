@@ -11,15 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625045834) do
+ActiveRecord::Schema.define(version: 20160725035127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "shortname"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
+  end
+
+  add_index "companies", ["location_id"], name: "index_companies_on_location_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "company_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image"
+    t.integer  "location_id"
+  end
+
+  add_index "items", ["company_id"], name: "index_items_on_company_id", using: :btree
+  add_index "items", ["location_id"], name: "index_items_on_location_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
 
+  add_foreign_key "companies", "locations"
+  add_foreign_key "items", "companies"
+  add_foreign_key "items", "locations"
 end
