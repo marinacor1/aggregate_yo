@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    @items = Item.items_by_company(@company[:shortname])
+    # @items = Item.items_by_company(@company[:shortname])
+    @items = @company.items
   end
 end

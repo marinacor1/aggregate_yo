@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+  has_many :items
+
   def self.company_save
     all_companies = FHServices.new.companies_hash[:companies]
     all_companies.each do |company|

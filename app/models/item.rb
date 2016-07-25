@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  belongs_to :company
 
   def self.items_by_location(location)
     all_companies_in_area = Company.find_by_location(location)
@@ -17,13 +18,13 @@ class Item < ActiveRecord::Base
     end
   end
 
-  def self.items_by_company(shortname)
-    all_items = FHServices.new.items_hash(shortname)
-    grouped = all_items[:items].map do |item|
-      {name: item[:name], location: item[:location],
-        image: item[:image_cdn_url]}
-    end
-  end
+  # def self.items_by_company(shortname)
+  #   all_items = FHServices.new.items_hash(shortname)
+  #   grouped = all_items[:items].map do |item|
+  #     {name: item[:name], location: item[:location],
+  #       image: item[:image_cdn_url]}
+  #   end
+  # end
 
   def self.item_save
     all_companies = Company.all
