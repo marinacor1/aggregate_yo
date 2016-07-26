@@ -57,5 +57,4 @@ class Item < ActiveRecord::Base
     end
     specific_company.save
   end
-
 end
