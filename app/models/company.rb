@@ -4,15 +4,17 @@ class Company < ActiveRecord::Base
   def self.company_save
     all_companies = FHServices.new.companies_hash[:companies]
     all_companies.each do |company|
-      unless Company.find_by(shortname: company[:shortname])
-        Company.create(name: company[:name], shortname: company[:shortname])
-      end
+      Company.find_or_create_by(shortname: company[:shortname], name: company[:name])
     end
     #how do I account for deleted companies?
   end
 
   def self.find_by_location(zip)
     Company.where(location: zip)
+  end
+
+  def self.in_record
+    #compare cache collection of companies with all_companies
   end
 
 end

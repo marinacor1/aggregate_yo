@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :check_updates
 
   def check_updates
-    # current_time = Time.now
-    # last_time = Item.last.updated_at
-    # if last_time.nil? || (last_time - current_time) > -20
-      update_companies_and_items
-    # end
+    update_companies_and_items if time_to_update?
+  end
+
+  def time_to_update?
+    true
   end
 
   def update_companies_and_items
