@@ -4,7 +4,7 @@ class Company < ActiveRecord::Base
   def self.company_save
     all_companies = FHServices.new.companies_hash[:companies]
     all_companies.each do |company|
-      Company.find_or_create_by(name: company[:name], shortname: company[:shortname])
+      Company.find_or_create_by(shortname: company[:shortname], name: company[:name])
     end
     #how do I account for deleted companies?
   end

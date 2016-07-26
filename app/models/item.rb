@@ -28,7 +28,13 @@ class Item < ActiveRecord::Base
   def self.saving_iteration(comp, item)
     #TODO PORO for item?
     specific_location = Location.find_by(name: item[:location])
-    Item.find_or_create_by(name: item[:name], company_id: comp.id, image: item[:image_cdn_url], location: specific_location)
+    if specific_location
+      Item.find_or_create_by(name: item[:name], company_id: comp.id, image: item[:image_cdn_url], location: specific_location)
+    else
+      location = Location.create(name: item[:location])
+      Item.find_or_create_by(name: item[:name], company_id: comp.id, image: item[:image_cdn_url], location: location)
+    end
+
   end
 
   def self.save_location(items_information)
