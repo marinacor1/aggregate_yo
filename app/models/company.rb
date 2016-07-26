@@ -13,4 +13,8 @@ class Company < ActiveRecord::Base
     Company.where(location: zip)
   end
 
+  def self.in_record
+    #compare cache collection of companies with all_companies
+  end
+
 end

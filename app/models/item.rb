@@ -26,12 +26,9 @@ class Item < ActiveRecord::Base
   end
 
   def self.saving_iteration(comp, item)
-      # new_item = Item.create(name: item[:name],
-      #                      company_id: comp.id,
-      #                      image: item[:image_cdn_url])
-      specific_location = Location.find_by(name: item[:location])
+    #TODO PORO for item?
+    specific_location = Location.find_by(name: item[:location])
     Item.find_or_create_by(name: item[:name], company_id: comp.id, image: item[:image_cdn_url], location: specific_location)
-      # self.create_location_reference(item[:location], new_item, specific_location)
   end
 
   def self.save_location(items_information)
@@ -46,11 +43,11 @@ class Item < ActiveRecord::Base
   end
 
   def self.create_location_reference(location, specific_company, specific_location)
-    if specific_location.nil?
+    if specific_location
+      specific_company.location_id = specific_location.id
+    else
       new_location = Location.create(name: location)
       specific_company.location_id = new_location.id
-    else
-      specific_company.location_id = specific_location.id
     end
     specific_company.save
   end
