@@ -3,7 +3,6 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
-      binding.pry
       marker.lat company.latitude
       marker.lng company.longitude
     end
