@@ -1,4 +1,6 @@
-<h1>All Companies</h1>
+<script>
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+</script><h1>All Companies</h1>
 <%= @company_save %>
 <% @companies.each do |company| %>
 <%= link_to "#{company[:name]}'s activities", company_path(company)%>
@@ -7,7 +9,3 @@
 <div style="width: 800px;">
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
-<script>
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-</script>
