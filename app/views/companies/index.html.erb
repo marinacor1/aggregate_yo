@@ -3,3 +3,11 @@
 <% @companies.each do |company| %>
 <%= link_to "#{company[:name]}'s activities", company_path(company)%>
 <% end %>
+
+<div style="width: 800px;">
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+</script>

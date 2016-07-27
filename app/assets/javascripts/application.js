@@ -12,11 +12,32 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
 
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": 0,
+      "lng": 0,
+      "picture": {
+        "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+        "width":  32,
+        "height": 32
+      },
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
