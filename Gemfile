@@ -15,6 +15,7 @@ gem 'faraday'
 gem 'responders', '~>2.0'
 gem 'rails_12factor', group: :production
 gem 'whenever'
+gem 'geocoder'
 
 group :development, :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
