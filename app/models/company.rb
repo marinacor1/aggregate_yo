@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
   has_many :items
+  geocoded_by :location
+  after_validation :geocode
 
   def self.company_save
     all_companies = FHServices.new.companies_hash[:companies]
