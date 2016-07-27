@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   belongs_to :company
   belongs_to :location
+  geocoded_by :location
+  after_validation :geocode
 
   def self.item_save
     companies = Company.all.map do |comp|
@@ -28,7 +30,7 @@ class Item < ActiveRecord::Base
   def self.saving_iteration(comp, item)
     #TODO PORO for item?
     specific_location = Location.find_by(name: item[:location])
-    if specific_location
+    if specific_location #if location exists
       Item.find_or_create_by(name: item[:name], company_id: comp.id, image: item[:image_cdn_url], location: specific_location)
     else
       location = Location.create(name: item[:location])
@@ -42,8 +44,8 @@ class Item < ActiveRecord::Base
       if items_hash[:items][:items]
         items_hash = items_hash[:items][:items].first
         specific_company = Company.find_by(shortname: items_information.first[:shortname])
-        specific_location = Location.find_by(name: items_hash[:location])
-        self.create_location_reference(items_hash[:location], specific_company, specific_location)
+        specific_company.update(location: items_hash[:location])
+        # self.create_location_reference(items_hash[:location], specific_company, specific_location)
       end
     end
   end
