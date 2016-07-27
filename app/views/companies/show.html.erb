@@ -1,7 +1,14 @@
-<h1><%= @company[:name] %>'s offered Activities</h1>
+<header class="company-show">
+  <h1><%= @company[:name] %>'s offered Activities</h1>
+</header>
 
-<ul><% @items.each do |item| %>
-<li><%= item[:name] %></li>
-<li><%= item[:location] %></li>
-<%= image_tag(item[:image], width: "300", height: "300") %></ul>
-<% end %>
+<div class="company-image">
+</div>
+
+<div class="items">
+  <% @items.each do |item| %>
+    <ul><%= item[:name] %></ul>
+    <ul><%= item[:location] %></ul>
+    <%= image_tag(item[:image], width: "300", height: "300") %></ul>
+  <% end %>
+</div>
