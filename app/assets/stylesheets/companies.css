@@ -1,0 +1,29 @@
+.companies-index {
+  background-color: #21bedd;
+  height: 800px;
+}
+
+html, body {
+    margin:0;
+    padding:0;
+}
+h1 {
+    margin:0;
+}
+
+i {
+  color: yellow;
+}
+
+ul {
+  font-size: 120%;
+  text-decoration: underline;
+}
+.companies {
+  padding: 20px;
+  font-family: arial;
+}
+
+.gmap {
+  padding-left: 25px;
+}

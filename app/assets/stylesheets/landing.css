@@ -1,10 +1,28 @@
 .welcome-drop {
 }
 
+a:hover {
+    color: #e5e500 !important;
+}
+a:visited {
+    color: #e5e500;
+}
+a:link {
+  color: #e5e500;
+  text-decoration: none;
+  font-family: arial;
+}
+
+a:active{
+    color: #e5e500;
+}
+
 .map-link {
   color: white;
   font-size: 150%;
   display: block;
+  padding-left: 40px;
+  padding-top: 20px;
 }
 
 .landing-page {
