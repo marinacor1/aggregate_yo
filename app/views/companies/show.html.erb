@@ -1,19 +1,28 @@
-<header class="company-show">
-  <h1><%= @company[:name] %>'s Activities</h1>
-</header>
   <ol class="breadcrumb">
     <li><%= link_to "Home", root_path %></li>
   </ol>
-<div class="company-image">
-</div>
+<div class="city-page">
 
-<div class="items">
-  <% @items.each do |item| %>
-    <ul><%= item[:name] %></ul>
-    <ul><%= item[:location] %></ul>
-    <%= image_tag(item[:image], width: "300", height: "300") %></ul>
-  <% end %>
+  <div class="company-splash">
+    <header class="company-show">
+      <h1><%= @company[:name] %>'s Activities</h1>
+    </header>
 </div>
-  <ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-  </ol>
+  <div class="company-image">
+  </div>
+    <div class="company dropdown">
+      <div id="myDropdownComp" class="dropdown-content">
+        <ul>Kayaking</ul>
+        <ul>Tours</ul>
+        <ul>winter Sports</ul>
+      </div>
+    </div>
+
+  <div class="items">
+    <% @items.each do |item| %>
+      <ul><%= item[:name] %></ul>
+      <ul><%= item[:location] %></ul>
+      <%= image_tag(item[:image], width: "300", height: "300") %></ul>
+    <% end %>
+  </div>
+</div>
