@@ -6,11 +6,9 @@
 .company-image {
   height: 150px;
   width: 800px;
-  display: inline-block;
 }
 
 .items {
-  display: block;
   font-family: arial;
   text-decoration: none;
   padding-left: 20px;
