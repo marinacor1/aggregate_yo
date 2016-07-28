@@ -5,7 +5,9 @@
   <header class="companies">
     <h1>All Companies</h1>
   </header>
- 
+   <ol class="breadcrumb">
+     <li><%= link_to "Home", root_path %></li>
+   </ol>
   <% @companies.each do |company| %>
   <ul><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <%= link_to "#{company[:name]}'s activities", company_path(company)%></ul>
   <% end %>

@@ -1,7 +1,9 @@
 <header class="company-show">
   <h1><%= @company[:name] %>'s Activities</h1>
 </header>
-
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+  </ol>
 <div class="company-image">
 </div>
 
@@ -12,3 +14,6 @@
     <%= image_tag(item[:image], width: "300", height: "300") %></ul>
   <% end %>
 </div>
+  <ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+  </ol>

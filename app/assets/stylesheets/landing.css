@@ -1,28 +1,32 @@
 .welcome-drop {
+    font-family: 'Dosis', sans-serif;
+}
+
+.landing-page {
+    font-family: 'Dosis', sans-serif;
 }
 
 a:hover {
-    color: #e5e500 !important;
 }
 a:visited {
-    color: #e5e500;
 }
 a:link {
-  color: #e5e500;
   text-decoration: none;
-  font-family: arial;
+  font-family: 'Dosis', sans-serif;
 }
 
-a:active{
-    color: #e5e500;
+.navbar-default {
+  background-color: #285a89 !important;
+  border-color: #285a89;
 }
-
 .map-link {
+  background-color: #285a89 !important;
   color: white;
   font-size: 150%;
   display: block;
   padding-left: 40px;
   padding-top: 20px;
+  box-shadow: 2px 2px;
 }
 
 .landing-page {
@@ -43,6 +47,6 @@ a:active{
   padding-left: 650px;
 }
 
-/*.li {
-  color: black;
-}*/
+#myDropdown {
+  box-shadow: 2px 2px;
+}

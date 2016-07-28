@@ -1,14 +1,22 @@
-<h1>Welcome to <%= @location[:name] %></h1>
-<div id="city-splash">
-
+<div class="city-page">
+  <div class="city-splash">
+    <h1>Welcome to <%= @location[:name] %></h1>
+  </div>
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+    </ol>
+    <div class="city-show col-xs-9 col-sm-6 col-md-4 col-lg-3">
+      <% if @location.items.nil? %>
+        <h2>We're sorry, but there are currently no items for this location right now</h2>
+      <% else %>
+        <h2>Items for this location: </h2>
+        <div class="caption">
+          <% @location.items.each do |item| %>
+          <ul><%= item[:name] %></ul>
+          <ul><%= item[:location] %></ul>
+          <ul><%= image_tag(item[:image], width: "300", height: "300") %></ul>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
 </div>
-<% if @location.items.nil? %>
-  <h2>We're sorry but there are currently no items for this location right now</h2>
-<% else %>
-  <h2>Items for this location: </h2>
-  <% @location.items.each do |item| %>
-  <ul><%= item[:name] %></ul>
-  <ul><%= item[:location] %></ul>
-  <ul><%= image_tag(item[:image], width: "300", height: "300") %></ul>
-  <% end %>
-<% end %>
