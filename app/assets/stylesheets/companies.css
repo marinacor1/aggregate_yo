@@ -2,6 +2,12 @@
   background: url('https://hd.unsplash.com/photo-1465284958051-1353268c077d') no-repeat center ;
 }
 
+.companies-list {
+  font-size: 150%;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-right: 10px;
+}
 /*html, body {
     margin:0;
     padding:0;
