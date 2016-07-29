@@ -1,0 +1,31 @@
+.companies-index {
+  background: url('https://hd.unsplash.com/photo-1444261022401-3e55387f54f9') no-repeat center ;
+}
+
+.companies-list {
+  font-size: 150%;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-right: 10px;
+}
+/*html, body {
+    margin:0;
+    padding:0;
+}
+h1 {
+    margin:0;
+}
+
+
+ul {
+  font-size: 120%;
+  text-decoration: underline;
+}
+.companies {
+  padding: 20px;
+  font-family: arial;
+}
+
+.gmap {
+  padding-left: 25px;
+}*/

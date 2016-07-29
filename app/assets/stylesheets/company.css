@@ -1,0 +1,26 @@
+.company-show {
+  padding: 20px;
+  font-family: arial;
+}
+
+.company-image {
+  height: 150px;
+  width: 800px;
+}
+
+.items {
+  font-family: arial;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.company-splash {
+  color: white;
+  text-align: left;
+  background: url("https://i.ytimg.com/vi/G63TOHluqno/maxresdefault.jpg") no-repeat center;
+  background-size: cover;
+  padding-top: 20px;
+  height: 300px;
+
+}

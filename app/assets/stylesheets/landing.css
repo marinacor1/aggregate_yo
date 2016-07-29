@@ -1,20 +1,36 @@
 .welcome-drop {
-}
-
-.map-link {
-  color: white;
-  font-size: 150%;
-  display: block;
+    font-family: 'Dosis', sans-serif;
 }
 
 .landing-page {
-  background: url(https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=2d2c41c9d46615b3caeea26fd902bb29) no-repeat center;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  width: 120%;
-  padding-bottom: 30px;
+    font-family: 'Dosis', sans-serif;
+}
+
+a:hover {
+}
+a:visited {
+}
+a:link {
+  text-decoration: none;
+  font-family: 'Dosis', sans-serif;
+}
+
+.navbar-default {
+  background-color: #285a89 !important;
+  border-color: #285a89;
+}
+.map-link {
+  background-color: #285a89 !important;
+  color: white;
+  font-size: 150%;
+  display: block;
+  padding-left: 40px;
+  padding-top: 20px;
+  box-shadow: 2px 2px;
+}
+
+.landing-page {
+  background: url(https://hd.unsplash.com/photo-1444261022401-3e55387f54f9) no-repeat center;
 }
 
 .where {
@@ -25,6 +41,6 @@
   padding-left: 650px;
 }
 
-/*.li {
-  color: black;
-}*/
+#myDropdown {
+  box-shadow: 2px 2px;
+}

@@ -1,0 +1,15 @@
+.city-page {
+  background: url("https://hd.unsplash.com/photo-1444261022401-3e55387f54f9") no-repeat center;
+}
+
+h2{
+font-family: 'Dosis', sans-serif; }
+
+.city-splash {
+  color: white;
+  text-align: left;
+  background: url("http://streets.mn/wp-content/uploads/2014/12/City-future.jpg") no-repeat center;
+  background-size: cover;
+  padding-top: 20px;
+  height: 300px;
+}

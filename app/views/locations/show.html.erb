@@ -1,14 +1,51 @@
-<h1>Welcome to <%= @location[:name] %></h1>
-<div id="city-splash">
+<div class="city-page">
+  <div class="brand"><%= @location[:name]%></div>
+  <div class="address-bar">A Place Like No Other</div>
 
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+  </ol>
+
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">About
+                        <strong><%= @location[:name] %></strong>
+                    </h2>
+                    <hr>
+                </div>
+  <div class="col-md-6">
+      <img class="img-responsive img-border-left" src="http://streets.mn/wp-content/uploads/2014/12/City-future.jpg" alt="">
+  </div>
+        <div class="col-md-6">
+            <p><%= @location[:name] %> is well know for its parks, beaches and vast open spaces.</p>
+            <p>Hitting the TripAdvisor API here to get a brief overview of city/ location and things it offers.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
 </div>
-<% if @location.items.nil? %>
-  <h2>We're sorry but there are currently no items for this location right now</h2>
-<% else %>
-  <h2>Items for this location: </h2>
-  <% @location.items.each do |item| %>
-  <ul><%= item[:name] %></ul>
-  <ul><%= item[:location] %></ul>
-  <ul><%= image_tag(item[:image], width: "300", height: "300") %></ul>
-  <% end %>
-<% end %>
+
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+              <h2 class="intro-text text-center">Most Popular
+                  <strong>Activities</strong>
+              </h2>
+              <hr>
+          </div>
+
+      <div class="locations">
+        <% @location.items.each do |item| %>
+      <div class="col-sm-4 text-center">
+        <img class="img-responsive"> <%= image_tag(item[:image], width: "350", height: "210") %>
+            <%= item[:name] %>
+            <%= item[:location] %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

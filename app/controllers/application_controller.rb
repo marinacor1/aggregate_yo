@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :check_updates
+  # before_action :check_updates
 
   def check_updates
     update_companies_and_items if time_to_update?
