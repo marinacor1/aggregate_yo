@@ -1,9 +1,8 @@
-/*.companies-index {
-  background-color: #21bedd;
-  height: 800px;
+.companies-index {
+  background: url('https://hd.unsplash.com/photo-1465284958051-1353268c077d') no-repeat center ;
 }
 
-html, body {
+/*html, body {
     margin:0;
     padding:0;
 }
