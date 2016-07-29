@@ -38,15 +38,14 @@
           </div>
 
       <div class="items">
-      <div class="col-sm-4 text-center">
       <% @items.each do |item| %>
-
-          <img class="img-responsive"> <%= image_tag(item[:image], width: "750", height: "450") %>
+      <div class="col-sm-4 text-center">
+          <img class="img-responsive"> <%= image_tag(item[:image], width: "350", height: "210") %>
           <h4><%= item[:name] %>
-              <small><%= item[:location] %></small>
+              <small><%= Location.find(item[:location_id]).name%></small>
           </h4>
-        <% end %>
       </div>
+        <% end %>
       </div>
   </div>
 </div>
