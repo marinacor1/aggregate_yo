@@ -16,8 +16,7 @@
                   </div>
 <div class="companies-list">
   <% @companies.each do |company| %>
-  <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>  
-    <%= link_to "#{company[:name]}", company_path(company)%>
+    <li><%= link_to "#{company[:name]}", company_path(company)%></li>
   <% end %>
 </div>
   <div class="col-md-8">
