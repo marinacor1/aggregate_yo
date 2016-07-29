@@ -1,27 +1,52 @@
+<div class="city-page">
+    <div class="brand"><%= @company[:name]%>'s Activities'</div>
+    <div class="address-bar">Offered Services</div>
+
   <ol class="breadcrumb">
     <li><%= link_to "Home", root_path %></li>
   </ol>
-<div class="city-page">
-  <div class="company-splash">
-    <header class="company-show">
-      <h1><%= @company[:name] %>'s Activities</h1>
-    </header>
-  </div>
-  <div class="company-image">
-  </div>
-    <div class="company dropdown">
-      <div id="myDropdownComp" class="dropdown-content">
-        <ul>Kayaking</ul>
-        <ul>Tours</ul>
-        <ul>winter Sports</ul>
-      </div>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">About
+                        <strong><%= @company[:name] %></strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive img-border-left" src="http://streets.mn/wp-content/uploads/2014/12/City-future.jpg" alt="">
+                </div>
+                <div class="col-md-6">
+                    <p><%= @company[:name] %> has been in <%= @company[:location] %> for over 15 years.</p>
+                    <p>Family owned and operated the operations began with Grandma Pete when he tuned the first bike and rented it out. Since then generations of families visit for bike tours and rentals.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 
-  <div class="items">
-    <% @items.each do |item| %>
-      <ul><%= item[:name] %></ul>
-      <ul><%= item[:location] %></ul>
-      <%= image_tag(item[:image], width: "300", height: "300") %></ul>
-    <% end %>
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+              <h2 class="intro-text text-center">Offered
+                  <strong>Services</strong>
+              </h2>
+              <hr>
+          </div>
+
+      <div class="items">
+      <div class="col-sm-4 text-center">
+      <% @items.each do |item| %>
+
+          <img class="img-responsive"> <%= image_tag(item[:image], width: "750", height: "450") %>
+          <h4><%= item[:name] %>
+              <small><%= item[:location] %></small>
+          </h4>
+        <% end %>
+      </div>
+      </div>
   </div>
 </div>

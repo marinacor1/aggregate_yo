@@ -1,5 +1,5 @@
 .city-page {
-  background-color: #c7c7c7;
+  background: url("https://hd.unsplash.com/photo-1465284958051-1353268c077d") no-repeat center;
 }
 
 h2{
@@ -12,17 +12,4 @@ font-family: 'Dosis', sans-serif; }
   background-size: cover;
   padding-top: 20px;
   height: 300px;
-}
-
-.single-item {
-  padding-top: 30px;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
-}
-
-.single-item-image {
-  padding-right: 50px;
-  border-radius: 8px;
-
 }
